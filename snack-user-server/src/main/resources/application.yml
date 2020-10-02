@@ -1,0 +1,9 @@
+spring:
+   profiles:
+      active: dev-6633
+
+---
+#配置eureka服务器启动时占用的端口
+server:
+   port: 6633
+

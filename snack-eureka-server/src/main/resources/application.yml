@@ -1,0 +1,29 @@
+spring:
+   profiles:
+      active: dev-6611
+
+---
+#配置eureka服务器启动时占用的端口
+server:
+   port: 6611
+
+spring:
+   profiles: dev-6611
+   application:
+      #配置应用程序名称
+      name: eureka-server
+   security:
+      user:
+         name: hx
+         password: 123
+         
+eureka:
+   instance:
+      hostname: 127.0.0.1
+   
+   client:
+      #我是服务器不是客户端，不要把自己注册进去
+      register-with-eureka: false
+      fetch-registry: false
+      service-url: 
+         defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka
