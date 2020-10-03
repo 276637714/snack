@@ -1,0 +1,47 @@
+spring:
+   profiles:
+      active: dev-6655
+
+---
+#配置eureka服务器启动时占用的端口
+server:
+   port: 6655
+
+spring:
+   profiles: dev-6655
+   application:
+      name: order-server
+   datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/snack_order?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+      type: com.alibaba.druid.pool.DruidDataSource
+      username: root
+      password: a
+   http:
+      encoding:
+         charset: utf-8
+         force: true
+         enabled: true
+   mail:
+      protocol: smtp
+      username: 1293580602@qq.com
+      password: dihpepdwtahlgefh
+      port: 465
+      host: smtp.qq.com
+      properties:
+         mail: 
+            smtp:
+               auth: true
+               timeout: 2500
+               ssl:
+                  enable: true
+mybatis:
+   mapper-locations: classpath:mapper/*Mapper.xml
+   type-aliases-package: com.yc.snack.order.bean
+#注册到注册中心   
+eureka:
+   client:
+      service-url:
+         defaultZone: http://hx:123@127.0.0.1:6611/eureka
+              
+

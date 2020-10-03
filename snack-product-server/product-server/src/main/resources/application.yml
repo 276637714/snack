@@ -1,0 +1,35 @@
+spring:
+   profiles:
+      active: dev-6644
+
+---
+#配置eureka服务器启动时占用的端口
+server:
+   port: 6644
+
+spring:
+   profiles: dev-6644
+   application:
+      name: user-server
+   datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/snack_product?useSSL=false&allowMultiQueries=true&useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+      type: com.alibaba.druid.pool.DruidDataSource
+      username: root
+      password: a
+   http:
+      encoding:
+         charset: utf-8
+         force: true
+         enabled: true
+   
+mybatis:
+   mapper-locations: classpath:mapper/*Mapper.xml
+   type-aliases-package: com.yc.snack.product.bean
+#注册到注册中心   
+eureka:
+   client:
+      service-url:
+         defaultZone: http://hx:123@127.0.0.1:6611/eureka
+              
+
